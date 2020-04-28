@@ -2,6 +2,7 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+import time
 
 url_1 = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
 response_1 = requests.get(url_1)
@@ -9,7 +10,15 @@ soup_1 = BeautifulSoup(response_1.text, "html.parser")
 news_title = soup_1.find(class_ = "content_title").text.strip()
 news_p = soup_1.find(class_ = "rollover_description_inner").text.strip()
 
-
+executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
+browser = Browser("chrome", **executable_path, headless=False)
+url_2 = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
+browser.visit(url_2)
+html = browser.html
+time.sleep(1)
+soup_2 = BeautifulSoup(html, "html.parser")
+result = soup_2.find("img", class_ = "thumb").get("src")
+featured_image_url = f"https://www.jpl.nasa.gov{result}"
 
 url_3 = "https://twitter.com/marswxreport?lang=en"
 response_2 = requests.get(url_3)
@@ -53,7 +62,7 @@ for url in url_a, url_b, url_c, url_d:
 hemisphere_image_urls = dict(zip(titles, img_urls))
 
 def scrape():
-    scraped_data = dict(news_title = soup_1.find(class_ = "content_title").text.strip(), news_p = soup_1.find(class_ = "rollover_description_inner").text.strip(), mars_weather = soup_3.find("p", class_ = "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text.strip(" hPapic.twitter.com/SkjAdWsePB"), html_table = df.to_html(), hemisphere_image_urls = dict(zip(titles, img_urls)))
+    scraped_data = dict(news_title = soup_1.find(class_ = "content_title").text.strip(), news_p = soup_1.find(class_ = "rollover_description_inner").text.strip(), featured_image_url = f"https://www.jpl.nasa.gov{result}", mars_weather = soup_3.find("p", class_ = "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text.strip(" hPapic.twitter.com/SkjAdWsePB"), html_table = df.to_html(), hemisphere_image_urls = dict(zip(titles, img_urls)))
     return scraped_data
 
-scrape()
+print(scrape())
