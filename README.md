@@ -1,4 +1,8 @@
 # web-scraping-challenge
+
+![Mission to Mars Image](https://github.com/RutgersCodingBootcamp/RU-JER-DATA-PT-01-2020/raw/master/02-Homework/12-Web-Scraping-and-Document-Databases/Instructions/Images/mission_to_mars.png)  
+
+
 Assignment (a challenging one for me, as I think I was still adjusting to the class being held exclusively online because of the COVID-19 pandemic): Create a web application that scrapes various websites for data and displays the information in a single HTML page...  
 To do the initial scraping in Step 1, I used Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.  
 First, I scraped the NASA Mars News site to collect the latest "News Title" and "Paragraph Text".  
