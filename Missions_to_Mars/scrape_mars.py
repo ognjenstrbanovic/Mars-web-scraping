@@ -5,6 +5,7 @@ import requests
 import pandas as pd
 import time
 
+# using BeautifulSoup
 url_1 = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
 response_1 = requests.get(url_1)
 soup_1 = BeautifulSoup(response_1.text, "html.parser")
