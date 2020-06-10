@@ -4,7 +4,6 @@ import pymongo
 from flask_pymongo import PyMongo
 import scrape_mars
 
-
 # create instance of Flask app
 app = Flask(__name__)
 

@@ -1,3 +1,4 @@
+# import dependencies
 from splinter import Browser
 from bs4 import BeautifulSoup
 import requests
@@ -33,7 +34,6 @@ df = tables[0]
 df.columns = ["Mars Facts", "Data"]
 df = df.replace("\n", "", regex=True)
 html_table = df.to_html()
-
 
 url_a = "https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced"
 url_b = "https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced"
