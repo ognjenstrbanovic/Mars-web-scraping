@@ -1,4 +1,4 @@
-# web-scraping-Mars 🔭
+# Mars Web Scraping 🔭
 
 ![Mission to Mars Image](https://github.com/RutgersCodingBootcamp/RU-JER-DATA-PT-01-2020/raw/master/02-Homework/12-Web-Scraping-and-Document-Databases/Instructions/Images/mission_to_mars.png)  
 
